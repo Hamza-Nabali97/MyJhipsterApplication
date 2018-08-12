@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tile">
+            <h2><span jhiTranslate="jhipsterappApp.tile.detail.title">Tile</span> {{tile.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterappApp.tile.name">Name</span></dt>
+                <dd>
+                    <span>{{tile.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterappApp.tile.code">Code</span></dt>
+                <dd>
+                    <span>{{tile.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterappApp.tile.size">Size</span></dt>
+                <dd>
+                    <span>{{tile.size}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterappApp.tile.placement">Placement</span></dt>
+                <dd>
+                    <span>{{tile.placement}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterappApp.tile.polishType">Polish Type</span></dt>
+                <dd>
+                    <span>{{tile.polishType}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterappApp.tile.costPrice">Cost Price</span></dt>
+                <dd>
+                    <span>{{tile.costPrice}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterappApp.tile.minimumSellingPrice">Minimum Selling Price</span></dt>
+                <dd>
+                    <span>{{tile.minimumSellingPrice}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterappApp.tile.inventoryQunatity">Inventory Qunatity</span></dt>
+                <dd>
+                    <span>{{tile.inventoryQunatity}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterappApp.tile.company">Company</span></dt>
+                <dd>
+                    <div *ngIf="tile.companyId">
+                        <a [routerLink]="['/company', tile.companyId, 'view']">{{tile.companyId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tile', tile.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

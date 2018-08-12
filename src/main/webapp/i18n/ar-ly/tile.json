@@ -1,0 +1,30 @@
+
+{
+    "jhipsterappApp": {
+        "tile" : {
+            "home": {
+                "title": "Tiles",
+                "createLabel": "Create a new Tile",
+                "createOrEditLabel": "Create or edit a Tile"
+            },
+            "created": "A new Tile is created with identifier {{ param }}",
+            "updated": "A Tile is updated with identifier {{ param }}",
+            "deleted": "A Tile is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Tile {{ id }}?"
+            },
+            "detail": {
+                "title": "Tile"
+            },
+            "name": "Name",
+            "code": "Code",
+            "size": "Size",
+            "placement": "Placement",
+            "polishType": "Polish Type",
+            "costPrice": "Cost Price",
+            "minimumSellingPrice": "Minimum Selling Price",
+            "inventoryQunatity": "Inventory Qunatity",
+            "company": "Company"
+        }
+    }
+}

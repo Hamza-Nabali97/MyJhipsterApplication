@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterappApp.tile.home.title">Tiles</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-tile" [routerLink]="['/tile/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhipsterappApp.tile.home.createLabel">
+            Create new Tile
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="tiles">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="jhipsterappApp.tile.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="code"><span jhiTranslate="jhipsterappApp.tile.code">Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="size"><span jhiTranslate="jhipsterappApp.tile.size">Size</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="placement"><span jhiTranslate="jhipsterappApp.tile.placement">Placement</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="polishType"><span jhiTranslate="jhipsterappApp.tile.polishType">Polish Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="costPrice"><span jhiTranslate="jhipsterappApp.tile.costPrice">Cost Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="minimumSellingPrice"><span jhiTranslate="jhipsterappApp.tile.minimumSellingPrice">Minimum Selling Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="inventoryQunatity"><span jhiTranslate="jhipsterappApp.tile.inventoryQunatity">Inventory Qunatity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="companyId"><span jhiTranslate="jhipsterappApp.tile.company">Company</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let tile of tiles ;trackBy: trackId">
+                <td><a [routerLink]="['/tile', tile.id, 'view' ]">{{tile.id}}</a></td>
+                <td>{{tile.name}}</td>
+                <td>{{tile.code}}</td>
+                <td>{{tile.size}}</td>
+                <td>{{tile.placement}}</td>
+                <td>{{tile.polishType}}</td>
+                <td>{{tile.costPrice}}</td>
+                <td>{{tile.minimumSellingPrice}}</td>
+                <td>{{tile.inventoryQunatity}}</td>
+                <td>
+                    <div *ngIf="tile.companyId">
+                        <a [routerLink]="['../company', tile.companyId , 'view' ]" >{{tile.companyId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/tile', tile.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/tile', tile.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'tile/'+ tile.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="tiles && tiles.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

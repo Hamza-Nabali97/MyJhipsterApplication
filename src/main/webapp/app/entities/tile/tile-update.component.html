@@ -1,0 +1,135 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-tile-heading" jhiTranslate="jhipsterappApp.tile.home.createOrEditLabel">Create or edit a Tile</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!tile.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="tile.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterappApp.tile.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="tile.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterappApp.tile.code" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                        [(ngModel)]="tile.code" required minlength="4"/>
+                    <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.code?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 4 }">
+                        This field is required to be at least 4 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterappApp.tile.size" for="field_size">Size</label>
+                    <input type="text" class="form-control" name="size" id="field_size"
+                        [(ngModel)]="tile.size" required/>
+                    <div [hidden]="!(editForm.controls.size?.dirty && editForm.controls.size?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.size?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterappApp.tile.placement" for="field_placement">Placement</label>
+                    <input type="text" class="form-control" name="placement" id="field_placement"
+                        [(ngModel)]="tile.placement" required/>
+                    <div [hidden]="!(editForm.controls.placement?.dirty && editForm.controls.placement?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.placement?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterappApp.tile.polishType" for="field_polishType">Polish Type</label>
+                    <input type="text" class="form-control" name="polishType" id="field_polishType"
+                        [(ngModel)]="tile.polishType" required/>
+                    <div [hidden]="!(editForm.controls.polishType?.dirty && editForm.controls.polishType?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.polishType?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterappApp.tile.costPrice" for="field_costPrice">Cost Price</label>
+                    <input type="number" class="form-control" name="costPrice" id="field_costPrice"
+                        [(ngModel)]="tile.costPrice" required/>
+                    <div [hidden]="!(editForm.controls.costPrice?.dirty && editForm.controls.costPrice?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.costPrice?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.costPrice?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterappApp.tile.minimumSellingPrice" for="field_minimumSellingPrice">Minimum Selling Price</label>
+                    <input type="number" class="form-control" name="minimumSellingPrice" id="field_minimumSellingPrice"
+                        [(ngModel)]="tile.minimumSellingPrice" required/>
+                    <div [hidden]="!(editForm.controls.minimumSellingPrice?.dirty && editForm.controls.minimumSellingPrice?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.minimumSellingPrice?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.minimumSellingPrice?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterappApp.tile.inventoryQunatity" for="field_inventoryQunatity">Inventory Qunatity</label>
+                    <input type="number" class="form-control" name="inventoryQunatity" id="field_inventoryQunatity"
+                        [(ngModel)]="tile.inventoryQunatity" required/>
+                    <div [hidden]="!(editForm.controls.inventoryQunatity?.dirty && editForm.controls.inventoryQunatity?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.inventoryQunatity?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.inventoryQunatity?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterappApp.tile.company" for="field_company">Company</label>
+                    <select class="form-control" id="field_company" name="company" [(ngModel)]="tile.companyId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="companyOption.id" *ngFor="let companyOption of companies; trackBy: trackCompanyById">{{companyOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
